@@ -1,1 +1,29 @@
-<p>login works!</p>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-6">
+            <form>
+                <!-- Email input -->
+                <h2 class="mb-5">{{pageName}} Page</h2>
+
+                <div  class="form-outline mb-4" *ngIf="isRegister">
+                  <label class="form-label" for="name">Name</label>
+                  <input type="text" [(ngModel)]="saveFormsData.name" name="name" id="name" class="form-control shadow-none" autocomplete="off" />
+                </div>
+
+                <div  class="form-outline mb-4">
+                  <label class="form-label" for="email">Email</label>
+                  <input type="email" [(ngModel)]="saveFormsData.email" name="email" id="email" class="form-control shadow-none" autocomplete="off" />
+                </div>
+              
+                <!-- Password input -->
+                <div  class="form-outline mb-4">
+                  <label class="form-label" for="password">Password</label>
+                  <input type="password" [(ngModel)]="saveFormsData.password" name="password"  id="password" class="form-control shadow-none"  autocomplete="off" />
+                </div>
+              
+                <!-- Submit button -->
+                <button type="button" class="btn btn-primary btn-block mb-4" (click)="onSubmitData()">{{isRegister ? 'Register':'Login'}}</button>
+              </form>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,11 @@ import { PaidcoursesComponent } from './components/paidcourses/paidcourses.compo
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +21,21 @@ import { HeaderComponent } from './components/header/header.component';
     PaidcoursesComponent,
     RegisterComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    PagenotfoundComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
